@@ -45,7 +45,37 @@ I'm partial to creating my own branches (e.g. `gt create graphite`), but whateve
 
 To turn this single branch into a PR on GitHub, you can use the `gt submit` command.
 
-<!-- DOWNSTACK: Add in info about creating other branches off of this branch -->
+### Next Branch
+
+For this example we run 
+
+```sh
+$ gt create feat/add-basic-rust-server
+$ cargo init
+```
+
+This initializes an empty rust project. Let's go ahead and update `Cargo.toml` to have `rocket = "0.5.0"` under the `[dependencies]` section.
+
+Next we change `src/main.rs` to contain the following
+
+```rust
+
+#[macro_use] extern crate rocket;
+
+#[get("/")]
+fn index() -> &'static str {
+    "Hello, world!"
+}
+
+#[launch]
+fn rocket() -> _ {
+    rocket::build().mount("/", routes![index])
+}
+
+// Downstream: Add in more routes
+```
+
+Verify it runs by using `cargo run`. Once you've done that, call `gt modify -m "feat: Adds in basic Rust server"`
 
 ### Cool Commands
 
