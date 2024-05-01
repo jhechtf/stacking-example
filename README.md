@@ -95,7 +95,28 @@ Also, modify line #11 to read
 ```rust
     rocket::build().mount("/", routes![index, hello])
 ```
+### End Result
 
+We now have a stack of 3 pull requests open on our repo. The second part of Graphite is the web UI for viewing stacked diffs. 
+
+If we navigate to [the Stack](https://app.graphite.dev/github/pr/jhechtf/stacking-example/1/docs-README-Adds-in-basic-setup-with-Graphite), we should see that this links to our first PR. 
+
+![PR Home](./images/stack-overview-1.png)
+
+The Graphite UI is very navigable without a mouse, with keyboard shortcuts such as `CMD + <up>` / `CMD + <down>` to jump to the next or previous file, respectively. As well as `CMD + <shift> + <up>` or `CMD + <shift> down` to move up or down the commit stack.
+
+One of the small bonuses I enjoy about Graphite is that in a PR (or a more aptly named "Merge Request" or "Code Review") the code is front-and-center, with the resulting non-code information off to either side. All of these changes are saved back to GitHub, so even users who don't use Graphite can be kept updated on any changes.
+
+#### Super Sneaky
+We went back to the basis of our setup, the `feat/add-basic-rust-server` and created a new branch, `ci/adds-in-ci-tests`,
+to add in a Rust format check for the code. This creates a new branching set of work. Should we continue to add things based on the `ci` branch,
+we will eventually have to merge it down with 
+
+#### Changes
+
+**"What happens if I get changes on a PR in the middle of the stack?"** Let's say we want to go back and add a few extra commands to the repo that we've learned since staring the base `graphite` branch.
+
+As you can see, we've added in our new "Cool Commands" section. This creates a conflict in the upstream branches, which can be resolved in the usual way that git rebasing is resolved. In my case, I resolved it by using VSCode's merge conflict editor. This is perhaps the biggest pain point of this process.
 
 ### Cool Commands
 
