@@ -30,3 +30,17 @@ The next part is different, we're going to use
 git town sync
 ```
 
+### Next Stack 
+
+To get started on the next thing in the stack, create a new branch with `git town hack feat/town-add-basic-rust-pkg`. This automatically creates a new branch and tracks that branches parent.
+
+Then you'll run `cargo init && cargo run` to verify that the application compiles and that you see `hello world` printed out in your console.
+
+Let's go ahead and add things in like we normally would --
+
+```sh
+git add .
+git commit -m "feat: Adds in basic Rust application"
+
+```
+
