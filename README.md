@@ -77,6 +77,26 @@ fn rocket() -> _ {
 
 Verify it runs by using `cargo run`. Once you've done that, call `gt modify -m "feat: Adds in basic Rust server"`
 
+### Next-Next Branch
+
+Again, run `gt create feat/add-in-hello-route`. 
+
+In `main.rs` add in the following, replacing the `// Downstrea: Add in more routes` comment
+
+```rust
+#[post("/hello/<name>")]
+fn hello(name: &str) -> String {
+    format!("Hi {name}")
+}
+```
+
+Also, modify line #11 to read 
+
+```rust
+    rocket::build().mount("/", routes![index, hello])
+```
+
+
 ### Cool Commands
 
 We're coming back to update the base PR with some cool commands we've found in Graphite
