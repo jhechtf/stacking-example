@@ -8,7 +8,10 @@ fn index() -> &'static str {
 
 #[launch]
 fn rocket() -> _ {
-    rocket::build().mount("/", routes![index])
+    rocket::build().mount("/", routes![index, hello])
 }
 
-// Downstream: Add in more routes
+#[post("/hello/<name>")]
+fn hello(name: &str) -> String {
+    format!("Hi {name}")
+}
