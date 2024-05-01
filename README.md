@@ -26,3 +26,15 @@ Then, to push up the stack run
 ```sh
 sl pr submit
 ```
+
+### Next Commit
+
+Instead of explicitly telling Sapling we're making something new, we simply run
+
+```sh
+# Initializes the basic rust repo
+cargo init
+# Adds items to be tracked by sapling
+sl add
+```
+
